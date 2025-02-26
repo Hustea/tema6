@@ -27,6 +27,9 @@ class Bicicleta {
 
     @Override
     public String toString() {
-        return "Referencia: " + referencia + "\nMarca: " + marca + "\nModelo: " + modelo + "\nPeso: " + peso + " kg\nTamaño de ruedas: " + tamanoRuedas + " pulgadas\nTiene motor: " + (tieneMotor ? "Sí" : "No") + "\nFecha de fabricación: " + fechaFabricacion + "\nPrecio: $" + precio + "\nExistencias: " + existencias;
+        return "Referencia: " + referencia + "\nMarca: " + marca + "\nModelo: " + modelo +
+        "\nPeso: " + peso + " kg\nTamaño de ruedas: " + tamanoRuedas + " pulgadas\nTiene motor: " +
+        (tieneMotor ? "Sí" : "No") + "\nFecha de fabricación: " + fechaFabricacion + "\nPrecio: $" +
+        precio + "\nExistencias: " + existencias;
     }
 }

@@ -6,55 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GestionBicicletas {
-    public static void main(String[] args) {
-        bicicletas.add(new Bicicleta("B001", "Trek", "Marlin 5", 13.5, 29, false, new Date(), 699.99, 10));
-        bicicletas.add(new Bicicleta("B002", "Specialized", "Rockhopper", 14.0, 27.5, false, new Date(), 799.99, 5));
-        bicicletas.add(new Bicicleta("B003", "Giant", "Talon 3", 12.8, 29, true, new Date(), 899.99, 3));
-
-        int opcion;
-        do {
-            mostrarMenu();
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    anadirBicicleta();
-                    break;
-                case 2:
-                    venderBicicleta();
-                    break;
-                case 3:
-                    consultarBicicleta();
-                    break;
-                case 4:
-                    mostrarStock();
-                    break;
-                case 0:
-                    System.out.println("Saliendo del programa...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
-            }
-        } while (opcion != 0);
-    }
     private static List<Bicicleta> bicicletas = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    private static void mostrarMenu() {
-        System.out.println("*************************");
-        System.out.println("** GESTIÓN DE BICICLETAS **");
-        System.out.println("*************************");
-        System.out.println("1.- Añadir bicicleta");
-        System.out.println("2.- Vender bicicleta");
-        System.out.println("3.- Consultar bicicleta");
-        System.out.println("4.- Mostrar stock");
-        System.out.println("------------------------------------");
-        System.out.println("0.- Salir");
-        System.out.print("Seleccione una opción: ");
-    }
-
-    private static void anadirBicicleta() {
+    public static void anadirBicicleta() {
         System.out.print("Introduzca la referencia: ");
         String referencia = scanner.nextLine();
 
@@ -75,10 +30,10 @@ public class GestionBicicletas {
             double tamanoRuedas = scanner.nextDouble();
             System.out.print("¿Tiene motor? (true/false): ");
             boolean tieneMotor = scanner.nextBoolean();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine();
             System.out.print("Introduzca la fecha de fabricación (dd/MM/yyyy): ");
             String fechaStr = scanner.nextLine();
-            Date fechaFabricacion = new Date(); // Simplificación, usar SimpleDateFormat para parsear la fecha
+            Date fechaFabricacion = new Date();
             System.out.print("Introduzca el precio: ");
             double precio = scanner.nextDouble();
             System.out.print("Introduzca el número de existencias: ");
@@ -90,7 +45,7 @@ public class GestionBicicletas {
         }
     }
 
-    private static void venderBicicleta() {
+    public static void venderBicicleta() {
         System.out.print("Introduzca la referencia de la bicicleta a vender: ");
         String referencia = scanner.nextLine();
 
@@ -107,37 +62,7 @@ public class GestionBicicletas {
         }
     }
 
-    private static void consultarBicicleta() {
-        System.out.println("***********************");
-        System.out.println("** CONSULTA BICICLETA **");
-        System.out.println("***********************");
-        System.out.println("1.- Consultar por referencia");
-        System.out.println("2.- Consultar por marca");
-        System.out.println("3.- Consultar por modelo");
-        System.out.println("--------------------------------");
-        System.out.println("0.- Volver al menú principal");
-        System.out.print("Seleccione una opción: ");
-        int opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
-
-        switch (opcion) {
-            case 1:
-                consultarPorReferencia();
-                break;
-            case 2:
-                consultarPorMarca();
-                break;
-            case 3:
-                consultarPorModelo();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opción no válida.");
-        }
-    }
-
-    private static void consultarPorReferencia() {
+    public static void consultarPorReferencia() {
         System.out.print("Introduzca la referencia: ");
         String referencia = scanner.nextLine();
 
@@ -149,7 +74,7 @@ public class GestionBicicletas {
         }
     }
 
-    private static void consultarPorMarca() {
+    public static void consultarPorMarca() {
         System.out.print("Introduzca la marca: ");
         String marca = scanner.nextLine();
 
@@ -166,7 +91,7 @@ public class GestionBicicletas {
         }
     }
 
-    private static void consultarPorModelo() {
+    public static void consultarPorModelo() {
         System.out.print("Introduzca el modelo: ");
         String modelo = scanner.nextLine();
 
@@ -183,19 +108,20 @@ public class GestionBicicletas {
         }
     }
 
-    private static void mostrarStock() {
-        for (Bicicleta bicicleta : bicicletas) {
-            System.out.println("Referencia: " + bicicleta.referencia + " - Existencias: " + bicicleta.existencias);
-        }
-    }
 
-    private static Bicicleta buscarPorReferencia(String referencia) {
+    public static Bicicleta buscarPorReferencia(String referencia) {
         for (Bicicleta bicicleta : bicicletas) {
             if (bicicleta.referencia.equalsIgnoreCase(referencia)) {
                 return bicicleta;
             }
         }
         return null;
+    }
+
+    public static void mostrarStock() {
+        for (Bicicleta bicicleta : bicicletas) {
+            System.out.println("Referencia: " + bicicleta.referencia + " - Existencias: " + bicicleta.existencias);
+        }
     }
 
 }
